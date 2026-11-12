@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this code or the released baseline, cite it."
+title: "sign-stack: isolated ASL recognition from pose landmarks"
+authors:
+  - family-names: "Lawson"
+    given-names: "Clayton"
+version: 1.0.0
+date-released: 2026-11-11
+url: "https://github.com/claytonvlawson/sign-stack"
+license: MIT
+abstract: >-
+  A pose pipeline, 250-sign vocabulary, training code and a frozen
+  signer-disjoint evaluation harness for isolated ASL recognition. The released
+  baseline scores 39.78% top-1 on 13,352 held-out clips from five signers that
+  do not appear in training.
+references:
+  - type: dataset
+    title: "Google Isolated Sign Language Recognition (asl-signs)"
+    url: "https://www.kaggle.com/competitions/asl-signs"

@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# downloaded artifacts (releases carry these)
+artifacts/*.pt
+dist/
+eval/frozen_v1/
+
+# local runs
+runs/
+data/
+reports/latest/

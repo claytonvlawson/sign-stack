@@ -1,0 +1,27 @@
+{
+  "name": "islr-signer-disjoint-v1",
+  "dataset": "Google Isolated Sign Language Recognition (asl-signs), 250 glosses",
+  "created": "2026-10-15",
+  "selection": "split_manifest.py --val-frac 0.15: whole signers held out, smallest signer first, then every gloss kept on both sides. No clip-level mixing.",
+  "held_out_signers": ["4718", "18796", "25571", "30680", "37779"],
+  "train_signers": ["16069", "2044", "22343", "26734", "27610", "28656", "29302", "32319", "34503", "36257", "37055", "49445", "53618", "55372", "61333", "62590"],
+  "train_clips": 67295,
+  "train_signers_count": 16,
+  "test_clips": 13352,
+  "test_signers_count": 5,
+  "glosses_in_train": 250,
+  "glosses_in_test": 250,
+  "glosses_only_in_test": [],
+  "min_clips_per_gloss_train": 156,
+  "frozen_eval_pack": {
+    "path": "eval/frozen_v1",
+    "recipe": "4 clips per sign per held-out signer (250 x 5 x 4 = 5000), chosen by ascending clip id within each (sign, signer) cell",
+    "why": "keeps the clone-and-run eval under ~250 MB while giving every sign 20 test clips spread over all five held-out people"
+  },
+  "train_checkpoint": {
+    "file": "artifacts/baseline_v1.pt",
+    "trained_on": "the 85% clip-level holdout carved from train.jsonl (57,201 clips) by the trainer; the 5 test signers were never in that manifest",
+    "epochs": 6,
+    "config": "configs/baseline.json"
+  }
+}

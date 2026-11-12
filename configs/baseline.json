@@ -1,0 +1,102 @@
+{
+  "name": "baseline_v1",
+  "checkpoint": "artifacts/baseline_v1.pt",
+  "checkpoint_sha256": "906d7e3eec2656181eb7841d68354f69cb8ff3489734fa7e5630afebd512fd39",
+  "features": {
+    "dim": 225,
+    "layout": "body17+left21+right21+face16, x/y/confidence",
+    "extractor": "mediapipe-holistic-225-v1",
+    "normalize": "torso-anchored"
+  },
+  "model": {
+    "d_model": 384,
+    "nhead": 6,
+    "enc_layers": 3,
+    "dec_layers": 3,
+    "ffn": 1536,
+    "dropout": 0.1,
+    "stem_convs": 2,
+    "input_dim": 225
+  },
+  "params": 13043966,
+  "training": {
+    "seed": 0,
+    "epochs": 6,
+    "batch": 16,
+    "optimizer": "AdamW",
+    "lr": 0.0003,
+    "weight_decay": 0.01,
+    "schedule": "cosine",
+    "label_smoothing": 0.1,
+    "grad_clip": 5.0,
+    "augmentation": [
+      "rotate",
+      "keystone",
+      "mirror_lr",
+      "mask_nondominant_arm"
+    ],
+    "train_manifest": "train.jsonl (67,295 clips, 16 signers)",
+    "trainer_val": "clip-level 15% of train.jsonl (10,094 clips; model selection only)",
+    "train_clips_used": 57201,
+    "epoch_losses": [
+      {
+        "epoch": 1,
+        "train": 3.2103052065943176,
+        "val": 2.8786796301226074
+      },
+      {
+        "epoch": 2,
+        "train": 2.705336597408491,
+        "val": 2.3863243392751188
+      },
+      {
+        "epoch": 3,
+        "train": 2.401042749084349,
+        "val": 2.157735482801365
+      },
+      {
+        "epoch": 4,
+        "train": 2.1695129515340663,
+        "val": 1.9083086961432347
+      },
+      {
+        "epoch": 5,
+        "train": 1.9585924983291285,
+        "val": 1.7656616779822338
+      },
+      {
+        "epoch": 6,
+        "train": 1.8311931760252456,
+        "val": 1.7043802677830564
+      }
+    ]
+  },
+  "results": {
+    "full_heldout_split": {
+      "clips": 13352,
+      "signs": 250,
+      "top1": 0.3978,
+      "top1_ci95": [
+        0.3895,
+        0.4061
+      ],
+      "top5": 0.6711,
+      "exact_match": 0.3978,
+      "macro_top1": 0.3715,
+      "report": "reports/full_val/report.json"
+    },
+    "frozen_pack": {
+      "clips": 4729,
+      "signs": 250,
+      "top1": 0.3722,
+      "top1_ci95": [
+        0.3585,
+        0.386
+      ],
+      "top5": 0.6464,
+      "exact_match": 0.3722,
+      "macro_top1": 0.3646,
+      "report": "reports/frozen_v1/report.json"
+    }
+  }
+}

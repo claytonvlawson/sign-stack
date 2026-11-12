@@ -1,0 +1,4 @@
+# Core eval + train path. Video extraction additionally needs mediapipe and
+# opencv-python (pip install -e ".[video]").
+numpy>=1.23
+torch>=2.0

@@ -1,0 +1,3510 @@
+{
+  "schema": 1,
+  "checkpoint": "artifacts/baseline_v1.pt",
+  "checkpoint_sha256": "906d7e3eec2656181eb7841d68354f69cb8ff3489734fa7e5630afebd512fd39",
+  "dataset": {
+    "kind": "pack",
+    "path": "eval/frozen_v1",
+    "frozen_files_verified": [
+      "freeze.json",
+      "index.jsonl",
+      "pack.json",
+      "shards/shard_0000.f32"
+    ],
+    "sha256sums_present": true
+  },
+  "split": {
+    "name": "islr-signer-disjoint-v1",
+    "dataset": "Google Isolated Sign Language Recognition (asl-signs), 250 glosses",
+    "created": "2026-10-15",
+    "selection": "split_manifest.py --val-frac 0.15: whole signers held out, smallest signer first, then every gloss kept on both sides. No clip-level mixing.",
+    "held_out_signers": [
+      "4718",
+      "18796",
+      "25571",
+      "30680",
+      "37779"
+    ],
+    "train_signers": [
+      "16069",
+      "2044",
+      "22343",
+      "26734",
+      "27610",
+      "28656",
+      "29302",
+      "32319",
+      "34503",
+      "36257",
+      "37055",
+      "49445",
+      "53618",
+      "55372",
+      "61333",
+      "62590"
+    ],
+    "train_clips": 67295,
+    "train_signers_count": 16,
+    "test_clips": 13352,
+    "test_signers_count": 5,
+    "glosses_in_train": 250,
+    "glosses_in_test": 250,
+    "glosses_only_in_test": [],
+    "min_clips_per_gloss_train": 156,
+    "frozen_eval_pack": {
+      "path": "eval/frozen_v1",
+      "recipe": "4 clips per sign per held-out signer (250 x 5 x 4 = 5000), chosen by ascending clip id within each (sign, signer) cell",
+      "why": "keeps the clone-and-run eval under ~250 MB while giving every sign 20 test clips spread over all five held-out people"
+    },
+    "train_checkpoint": {
+      "file": "artifacts/baseline_v1.pt",
+      "trained_on": "the 85% clip-level holdout carved from train.jsonl (57,201 clips) by the trainer; the 5 test signers were never in that manifest",
+      "epochs": 6,
+      "config": "configs/baseline.json"
+    }
+  },
+  "clips": 4729,
+  "classes": 250,
+  "params": 13043966,
+  "metrics": {
+    "top1": 0.3722,
+    "top1_ci95": [
+      0.3585,
+      0.386
+    ],
+    "top5": 0.6464,
+    "exact_match": 0.3722,
+    "macro_top1": 0.3646
+  },
+  "per_signer": {
+    "18796": {
+      "exact": 0.46,
+      "sequence_exact": 0.46,
+      "n": 976
+    },
+    "25571": {
+      "exact": 0.3927,
+      "sequence_exact": 0.3927,
+      "n": 960
+    },
+    "30680": {
+      "exact": 0.2878,
+      "sequence_exact": 0.2878,
+      "n": 900
+    },
+    "37779": {
+      "exact": 0.5273,
+      "sequence_exact": 0.5273,
+      "n": 899
+    },
+    "4718": {
+      "exact": 0.2022,
+      "sequence_exact": 0.2022,
+      "n": 994
+    }
+  },
+  "per_sign": [
+    {
+      "sign": "after",
+      "support": 13,
+      "correct": 2,
+      "recall": 0.1538,
+      "precision": 0.6667,
+      "f1": 0.25,
+      "top5_recall": 0.3077,
+      "most_confused_with": {
+        "sign": "quiet",
+        "n": 2
+      }
+    },
+    {
+      "sign": "airplane",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.5385,
+      "f1": 0.4242,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "drop",
+        "n": 2
+      }
+    },
+    {
+      "sign": "all",
+      "support": 20,
+      "correct": 5,
+      "recall": 0.25,
+      "precision": 0.4545,
+      "f1": 0.3226,
+      "top5_recall": 0.4,
+      "most_confused_with": {
+        "sign": "clean",
+        "n": 2
+      }
+    },
+    {
+      "sign": "alligator",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.6111,
+      "f1": 0.5789,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "frenchfries",
+        "n": 3
+      }
+    },
+    {
+      "sign": "animal",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.4783,
+      "f1": 0.5116,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "bath",
+        "n": 3
+      }
+    },
+    {
+      "sign": "another",
+      "support": 17,
+      "correct": 9,
+      "recall": 0.5294,
+      "precision": 0.4286,
+      "f1": 0.4737,
+      "top5_recall": 0.7647,
+      "most_confused_with": {
+        "sign": "black",
+        "n": 3
+      }
+    },
+    {
+      "sign": "any",
+      "support": 18,
+      "correct": 5,
+      "recall": 0.2778,
+      "precision": 1.0,
+      "f1": 0.4348,
+      "top5_recall": 0.3333,
+      "most_confused_with": {
+        "sign": "bath",
+        "n": 1
+      }
+    },
+    {
+      "sign": "apple",
+      "support": 20,
+      "correct": 15,
+      "recall": 0.75,
+      "precision": 0.6522,
+      "f1": 0.6977,
+      "top5_recall": 0.9,
+      "most_confused_with": {
+        "sign": "cheek",
+        "n": 2
+      }
+    },
+    {
+      "sign": "arm",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.3103,
+      "f1": 0.3673,
+      "top5_recall": 0.6,
+      "most_confused_with": {
+        "sign": "table",
+        "n": 3
+      }
+    },
+    {
+      "sign": "aunt",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.4,
+      "f1": 0.2667,
+      "top5_recall": 0.25,
+      "most_confused_with": {
+        "sign": "gift",
+        "n": 2
+      }
+    },
+    {
+      "sign": "awake",
+      "support": 20,
+      "correct": 3,
+      "recall": 0.15,
+      "precision": 0.4286,
+      "f1": 0.2222,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "wake",
+        "n": 7
+      }
+    },
+    {
+      "sign": "backyard",
+      "support": 16,
+      "correct": 2,
+      "recall": 0.125,
+      "precision": 0.0769,
+      "f1": 0.0952,
+      "top5_recall": 0.25,
+      "most_confused_with": {
+        "sign": "hate",
+        "n": 2
+      }
+    },
+    {
+      "sign": "bad",
+      "support": 14,
+      "correct": 3,
+      "recall": 0.2143,
+      "precision": 0.25,
+      "f1": 0.2308,
+      "top5_recall": 0.6429,
+      "most_confused_with": {
+        "sign": "thankyou",
+        "n": 3
+      }
+    },
+    {
+      "sign": "balloon",
+      "support": 20,
+      "correct": 12,
+      "recall": 0.6,
+      "precision": 0.6,
+      "f1": 0.6,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "elephant",
+        "n": 2
+      }
+    },
+    {
+      "sign": "bath",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.2857,
+      "f1": 0.2927,
+      "top5_recall": 0.7,
+      "most_confused_with": {
+        "sign": "animal",
+        "n": 4
+      }
+    },
+    {
+      "sign": "because",
+      "support": 20,
+      "correct": 5,
+      "recall": 0.25,
+      "precision": 0.4545,
+      "f1": 0.3226,
+      "top5_recall": 0.6,
+      "most_confused_with": {
+        "sign": "black",
+        "n": 2
+      }
+    },
+    {
+      "sign": "bed",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.3333,
+      "f1": 0.3415,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "on",
+        "n": 2
+      }
+    },
+    {
+      "sign": "bedroom",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.5,
+      "f1": 0.4118,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "hello",
+        "n": 3
+      }
+    },
+    {
+      "sign": "bee",
+      "support": 20,
+      "correct": 3,
+      "recall": 0.15,
+      "precision": 0.3,
+      "f1": 0.2,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "cat",
+        "n": 4
+      }
+    },
+    {
+      "sign": "before",
+      "support": 20,
+      "correct": 8,
+      "recall": 0.4,
+      "precision": 0.3636,
+      "f1": 0.381,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "happy",
+        "n": 2
+      }
+    },
+    {
+      "sign": "beside",
+      "support": 14,
+      "correct": 0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "top5_recall": 0.1429,
+      "most_confused_with": {
+        "sign": "jacket",
+        "n": 2
+      }
+    },
+    {
+      "sign": "better",
+      "support": 20,
+      "correct": 10,
+      "recall": 0.5,
+      "precision": 0.8333,
+      "f1": 0.625,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "all",
+        "n": 1
+      }
+    },
+    {
+      "sign": "bird",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.6667,
+      "f1": 0.4138,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "nuts",
+        "n": 3
+      }
+    },
+    {
+      "sign": "black",
+      "support": 20,
+      "correct": 12,
+      "recall": 0.6,
+      "precision": 0.4444,
+      "f1": 0.5106,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "because",
+        "n": 2
+      }
+    },
+    {
+      "sign": "blow",
+      "support": 18,
+      "correct": 13,
+      "recall": 0.7222,
+      "precision": 0.619,
+      "f1": 0.6667,
+      "top5_recall": 0.7222,
+      "most_confused_with": {
+        "sign": "bug",
+        "n": 1
+      }
+    },
+    {
+      "sign": "blue",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.4118,
+      "f1": 0.3784,
+      "top5_recall": 0.6,
+      "most_confused_with": {
+        "sign": "cat",
+        "n": 3
+      }
+    },
+    {
+      "sign": "boat",
+      "support": 20,
+      "correct": 1,
+      "recall": 0.05,
+      "precision": 0.1,
+      "f1": 0.0667,
+      "top5_recall": 0.3,
+      "most_confused_with": {
+        "sign": "napkin",
+        "n": 3
+      }
+    },
+    {
+      "sign": "book",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.5625,
+      "f1": 0.5,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "smile",
+        "n": 2
+      }
+    },
+    {
+      "sign": "boy",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.3529,
+      "f1": 0.3243,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "radio",
+        "n": 3
+      }
+    },
+    {
+      "sign": "brother",
+      "support": 16,
+      "correct": 9,
+      "recall": 0.5625,
+      "precision": 0.5294,
+      "f1": 0.5455,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "jacket",
+        "n": 3
+      }
+    },
+    {
+      "sign": "brown",
+      "support": 20,
+      "correct": 14,
+      "recall": 0.7,
+      "precision": 0.7778,
+      "f1": 0.7368,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "drink",
+        "n": 2
+      }
+    },
+    {
+      "sign": "bug",
+      "support": 20,
+      "correct": 15,
+      "recall": 0.75,
+      "precision": 0.4412,
+      "f1": 0.5556,
+      "top5_recall": 0.9,
+      "most_confused_with": {
+        "sign": "boy",
+        "n": 1
+      }
+    },
+    {
+      "sign": "bye",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.3684,
+      "f1": 0.359,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "find",
+        "n": 2
+      }
+    },
+    {
+      "sign": "callonphone",
+      "support": 18,
+      "correct": 8,
+      "recall": 0.4444,
+      "precision": 0.4706,
+      "f1": 0.4571,
+      "top5_recall": 0.6667,
+      "most_confused_with": {
+        "sign": "before",
+        "n": 1
+      }
+    },
+    {
+      "sign": "can",
+      "support": 15,
+      "correct": 2,
+      "recall": 0.1333,
+      "precision": 0.1176,
+      "f1": 0.125,
+      "top5_recall": 0.4667,
+      "most_confused_with": {
+        "sign": "haveto",
+        "n": 4
+      }
+    },
+    {
+      "sign": "car",
+      "support": 17,
+      "correct": 5,
+      "recall": 0.2941,
+      "precision": 0.3571,
+      "f1": 0.3226,
+      "top5_recall": 0.5882,
+      "most_confused_with": {
+        "sign": "bye",
+        "n": 2
+      }
+    },
+    {
+      "sign": "carrot",
+      "support": 20,
+      "correct": 8,
+      "recall": 0.4,
+      "precision": 0.8,
+      "f1": 0.5333,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "nuts",
+        "n": 4
+      }
+    },
+    {
+      "sign": "cat",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.1143,
+      "f1": 0.1455,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "blue",
+        "n": 4
+      }
+    },
+    {
+      "sign": "cereal",
+      "support": 16,
+      "correct": 4,
+      "recall": 0.25,
+      "precision": 0.5,
+      "f1": 0.3333,
+      "top5_recall": 0.6875,
+      "most_confused_with": {
+        "sign": "hesheit",
+        "n": 4
+      }
+    },
+    {
+      "sign": "chair",
+      "support": 18,
+      "correct": 5,
+      "recall": 0.2778,
+      "precision": 0.1351,
+      "f1": 0.1818,
+      "top5_recall": 0.8333,
+      "most_confused_with": {
+        "sign": "read",
+        "n": 5
+      }
+    },
+    {
+      "sign": "cheek",
+      "support": 16,
+      "correct": 11,
+      "recall": 0.6875,
+      "precision": 0.4583,
+      "f1": 0.55,
+      "top5_recall": 1.0,
+      "most_confused_with": {
+        "sign": "ear",
+        "n": 2
+      }
+    },
+    {
+      "sign": "child",
+      "support": 18,
+      "correct": 7,
+      "recall": 0.3889,
+      "precision": 0.2414,
+      "f1": 0.2979,
+      "top5_recall": 0.4444,
+      "most_confused_with": {
+        "sign": "boy",
+        "n": 1
+      }
+    },
+    {
+      "sign": "chin",
+      "support": 13,
+      "correct": 1,
+      "recall": 0.0769,
+      "precision": 1.0,
+      "f1": 0.1429,
+      "top5_recall": 0.6154,
+      "most_confused_with": {
+        "sign": "say",
+        "n": 2
+      }
+    },
+    {
+      "sign": "chocolate",
+      "support": 20,
+      "correct": 8,
+      "recall": 0.4,
+      "precision": 0.32,
+      "f1": 0.3556,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "frenchfries",
+        "n": 4
+      }
+    },
+    {
+      "sign": "clean",
+      "support": 18,
+      "correct": 7,
+      "recall": 0.3889,
+      "precision": 0.5,
+      "f1": 0.4375,
+      "top5_recall": 0.5,
+      "most_confused_with": {
+        "sign": "dirty",
+        "n": 2
+      }
+    },
+    {
+      "sign": "close",
+      "support": 16,
+      "correct": 2,
+      "recall": 0.125,
+      "precision": 0.2,
+      "f1": 0.1538,
+      "top5_recall": 0.4375,
+      "most_confused_with": {
+        "sign": "touch",
+        "n": 3
+      }
+    },
+    {
+      "sign": "closet",
+      "support": 16,
+      "correct": 5,
+      "recall": 0.3125,
+      "precision": 0.5556,
+      "f1": 0.4,
+      "top5_recall": 0.375,
+      "most_confused_with": {
+        "sign": "can",
+        "n": 3
+      }
+    },
+    {
+      "sign": "cloud",
+      "support": 20,
+      "correct": 2,
+      "recall": 0.1,
+      "precision": 0.125,
+      "f1": 0.1111,
+      "top5_recall": 0.45,
+      "most_confused_with": {
+        "sign": "frenchfries",
+        "n": 4
+      }
+    },
+    {
+      "sign": "clown",
+      "support": 20,
+      "correct": 12,
+      "recall": 0.6,
+      "precision": 0.4,
+      "f1": 0.48,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "face",
+        "n": 1
+      }
+    },
+    {
+      "sign": "cow",
+      "support": 20,
+      "correct": 5,
+      "recall": 0.25,
+      "precision": 0.5,
+      "f1": 0.3333,
+      "top5_recall": 0.7,
+      "most_confused_with": {
+        "sign": "find",
+        "n": 6
+      }
+    },
+    {
+      "sign": "cowboy",
+      "support": 18,
+      "correct": 7,
+      "recall": 0.3889,
+      "precision": 0.4667,
+      "f1": 0.4242,
+      "top5_recall": 0.6667,
+      "most_confused_with": {
+        "sign": "boy",
+        "n": 2
+      }
+    },
+    {
+      "sign": "cry",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.4,
+      "f1": 0.2667,
+      "top5_recall": 0.6,
+      "most_confused_with": {
+        "sign": "callonphone",
+        "n": 4
+      }
+    },
+    {
+      "sign": "cut",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.2857,
+      "f1": 0.2353,
+      "top5_recall": 0.6,
+      "most_confused_with": {
+        "sign": "like",
+        "n": 3
+      }
+    },
+    {
+      "sign": "cute",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.4615,
+      "f1": 0.3636,
+      "top5_recall": 0.45,
+      "most_confused_with": {
+        "sign": "underwear",
+        "n": 3
+      }
+    },
+    {
+      "sign": "dad",
+      "support": 20,
+      "correct": 12,
+      "recall": 0.6,
+      "precision": 0.75,
+      "f1": 0.6667,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "man",
+        "n": 2
+      }
+    },
+    {
+      "sign": "dance",
+      "support": 20,
+      "correct": 14,
+      "recall": 0.7,
+      "precision": 0.5185,
+      "f1": 0.5957,
+      "top5_recall": 1.0,
+      "most_confused_with": {
+        "sign": "drop",
+        "n": 2
+      }
+    },
+    {
+      "sign": "dirty",
+      "support": 20,
+      "correct": 16,
+      "recall": 0.8,
+      "precision": 0.5714,
+      "f1": 0.6667,
+      "top5_recall": 1.0,
+      "most_confused_with": {
+        "sign": "pig",
+        "n": 4
+      }
+    },
+    {
+      "sign": "dog",
+      "support": 20,
+      "correct": 2,
+      "recall": 0.1,
+      "precision": 0.1429,
+      "f1": 0.1176,
+      "top5_recall": 0.35,
+      "most_confused_with": {
+        "sign": "open",
+        "n": 3
+      }
+    },
+    {
+      "sign": "doll",
+      "support": 20,
+      "correct": 13,
+      "recall": 0.65,
+      "precision": 0.3023,
+      "f1": 0.4127,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "orange",
+        "n": 2
+      }
+    },
+    {
+      "sign": "donkey",
+      "support": 20,
+      "correct": 14,
+      "recall": 0.7,
+      "precision": 0.6667,
+      "f1": 0.6829,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "rain",
+        "n": 2
+      }
+    },
+    {
+      "sign": "down",
+      "support": 13,
+      "correct": 0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "top5_recall": 0.5385,
+      "most_confused_with": {
+        "sign": "drop",
+        "n": 4
+      }
+    },
+    {
+      "sign": "drawer",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.2857,
+      "f1": 0.2353,
+      "top5_recall": 0.25,
+      "most_confused_with": {
+        "sign": "wait",
+        "n": 4
+      }
+    },
+    {
+      "sign": "drink",
+      "support": 20,
+      "correct": 18,
+      "recall": 0.9,
+      "precision": 0.4186,
+      "f1": 0.5714,
+      "top5_recall": 0.95,
+      "most_confused_with": {
+        "sign": "look",
+        "n": 1
+      }
+    },
+    {
+      "sign": "drop",
+      "support": 15,
+      "correct": 4,
+      "recall": 0.2667,
+      "precision": 0.16,
+      "f1": 0.2,
+      "top5_recall": 0.4667,
+      "most_confused_with": {
+        "sign": "brother",
+        "n": 1
+      }
+    },
+    {
+      "sign": "dry",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.5625,
+      "f1": 0.5,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "dryer",
+        "n": 2
+      }
+    },
+    {
+      "sign": "dryer",
+      "support": 16,
+      "correct": 5,
+      "recall": 0.3125,
+      "precision": 0.5,
+      "f1": 0.3846,
+      "top5_recall": 0.4375,
+      "most_confused_with": {
+        "sign": "dry",
+        "n": 2
+      }
+    },
+    {
+      "sign": "duck",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.5,
+      "f1": 0.5238,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "elephant",
+        "n": 2
+      }
+    },
+    {
+      "sign": "ear",
+      "support": 20,
+      "correct": 12,
+      "recall": 0.6,
+      "precision": 0.3636,
+      "f1": 0.4528,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "another",
+        "n": 1
+      }
+    },
+    {
+      "sign": "elephant",
+      "support": 19,
+      "correct": 8,
+      "recall": 0.4211,
+      "precision": 0.2105,
+      "f1": 0.2807,
+      "top5_recall": 0.7895,
+      "most_confused_with": {
+        "sign": "blow",
+        "n": 2
+      }
+    },
+    {
+      "sign": "empty",
+      "support": 17,
+      "correct": 3,
+      "recall": 0.1765,
+      "precision": 0.3,
+      "f1": 0.2222,
+      "top5_recall": 0.5294,
+      "most_confused_with": {
+        "sign": "hot",
+        "n": 5
+      }
+    },
+    {
+      "sign": "every",
+      "support": 9,
+      "correct": 0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "top5_recall": 0.1111,
+      "most_confused_with": {
+        "sign": "girl",
+        "n": 3
+      }
+    },
+    {
+      "sign": "eye",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.6111,
+      "f1": 0.5789,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "milk",
+        "n": 2
+      }
+    },
+    {
+      "sign": "face",
+      "support": 19,
+      "correct": 8,
+      "recall": 0.4211,
+      "precision": 0.6154,
+      "f1": 0.5,
+      "top5_recall": 0.7895,
+      "most_confused_with": {
+        "sign": "girl",
+        "n": 3
+      }
+    },
+    {
+      "sign": "fall",
+      "support": 16,
+      "correct": 4,
+      "recall": 0.25,
+      "precision": 0.2667,
+      "f1": 0.2581,
+      "top5_recall": 0.5,
+      "most_confused_with": {
+        "sign": "arm",
+        "n": 1
+      }
+    },
+    {
+      "sign": "farm",
+      "support": 20,
+      "correct": 8,
+      "recall": 0.4,
+      "precision": 0.8,
+      "f1": 0.5333,
+      "top5_recall": 0.55,
+      "most_confused_with": {
+        "sign": "balloon",
+        "n": 3
+      }
+    },
+    {
+      "sign": "fast",
+      "support": 20,
+      "correct": 5,
+      "recall": 0.25,
+      "precision": 0.3846,
+      "f1": 0.303,
+      "top5_recall": 0.5,
+      "most_confused_with": {
+        "sign": "ear",
+        "n": 3
+      }
+    },
+    {
+      "sign": "feet",
+      "support": 19,
+      "correct": 5,
+      "recall": 0.2632,
+      "precision": 0.7143,
+      "f1": 0.3846,
+      "top5_recall": 0.4211,
+      "most_confused_with": {
+        "sign": "aunt",
+        "n": 1
+      }
+    },
+    {
+      "sign": "find",
+      "support": 20,
+      "correct": 17,
+      "recall": 0.85,
+      "precision": 0.3542,
+      "f1": 0.5,
+      "top5_recall": 0.95,
+      "most_confused_with": {
+        "sign": "on",
+        "n": 1
+      }
+    },
+    {
+      "sign": "fine",
+      "support": 18,
+      "correct": 6,
+      "recall": 0.3333,
+      "precision": 0.4615,
+      "f1": 0.3871,
+      "top5_recall": 0.7222,
+      "most_confused_with": {
+        "sign": "chocolate",
+        "n": 2
+      }
+    },
+    {
+      "sign": "finger",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.3333,
+      "f1": 0.3415,
+      "top5_recall": 0.6,
+      "most_confused_with": {
+        "sign": "wait",
+        "n": 3
+      }
+    },
+    {
+      "sign": "finish",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.75,
+      "f1": 0.5625,
+      "top5_recall": 0.55,
+      "most_confused_with": {
+        "sign": "find",
+        "n": 3
+      }
+    },
+    {
+      "sign": "fireman",
+      "support": 20,
+      "correct": 16,
+      "recall": 0.8,
+      "precision": 0.8421,
+      "f1": 0.8205,
+      "top5_recall": 0.95,
+      "most_confused_with": {
+        "sign": "boy",
+        "n": 1
+      }
+    },
+    {
+      "sign": "first",
+      "support": 17,
+      "correct": 2,
+      "recall": 0.1176,
+      "precision": 0.4,
+      "f1": 0.1818,
+      "top5_recall": 0.5882,
+      "most_confused_with": {
+        "sign": "dog",
+        "n": 3
+      }
+    },
+    {
+      "sign": "fish",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.4,
+      "f1": 0.3429,
+      "top5_recall": 0.5,
+      "most_confused_with": {
+        "sign": "bad",
+        "n": 1
+      }
+    },
+    {
+      "sign": "flag",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.3333,
+      "f1": 0.25,
+      "top5_recall": 0.3,
+      "most_confused_with": {
+        "sign": "before",
+        "n": 3
+      }
+    },
+    {
+      "sign": "flower",
+      "support": 20,
+      "correct": 14,
+      "recall": 0.7,
+      "precision": 0.9333,
+      "f1": 0.8,
+      "top5_recall": 0.9,
+      "most_confused_with": {
+        "sign": "clown",
+        "n": 4
+      }
+    },
+    {
+      "sign": "food",
+      "support": 20,
+      "correct": 15,
+      "recall": 0.75,
+      "precision": 0.4286,
+      "f1": 0.5455,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "clown",
+        "n": 1
+      }
+    },
+    {
+      "sign": "for",
+      "support": 20,
+      "correct": 16,
+      "recall": 0.8,
+      "precision": 0.5161,
+      "f1": 0.6275,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "night",
+        "n": 1
+      }
+    },
+    {
+      "sign": "frenchfries",
+      "support": 20,
+      "correct": 16,
+      "recall": 0.8,
+      "precision": 0.5,
+      "f1": 0.6154,
+      "top5_recall": 0.9,
+      "most_confused_with": {
+        "sign": "close",
+        "n": 1
+      }
+    },
+    {
+      "sign": "frog",
+      "support": 20,
+      "correct": 13,
+      "recall": 0.65,
+      "precision": 0.52,
+      "f1": 0.5778,
+      "top5_recall": 0.7,
+      "most_confused_with": {
+        "sign": "bug",
+        "n": 2
+      }
+    },
+    {
+      "sign": "garbage",
+      "support": 20,
+      "correct": 2,
+      "recall": 0.1,
+      "precision": 0.25,
+      "f1": 0.1429,
+      "top5_recall": 0.5,
+      "most_confused_with": {
+        "sign": "shhh",
+        "n": 4
+      }
+    },
+    {
+      "sign": "gift",
+      "support": 18,
+      "correct": 5,
+      "recall": 0.2778,
+      "precision": 0.3333,
+      "f1": 0.303,
+      "top5_recall": 0.6111,
+      "most_confused_with": {
+        "sign": "tomorrow",
+        "n": 2
+      }
+    },
+    {
+      "sign": "giraffe",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.6,
+      "f1": 0.5143,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "hat",
+        "n": 2
+      }
+    },
+    {
+      "sign": "girl",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.25,
+      "f1": 0.2727,
+      "top5_recall": 0.7,
+      "most_confused_with": {
+        "sign": "cheek",
+        "n": 2
+      }
+    },
+    {
+      "sign": "give",
+      "support": 16,
+      "correct": 0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "top5_recall": 0.1875,
+      "most_confused_with": {
+        "sign": "vacuum",
+        "n": 2
+      }
+    },
+    {
+      "sign": "glasswindow",
+      "support": 20,
+      "correct": 5,
+      "recall": 0.25,
+      "precision": 0.3333,
+      "f1": 0.2857,
+      "top5_recall": 0.6,
+      "most_confused_with": {
+        "sign": "nose",
+        "n": 2
+      }
+    },
+    {
+      "sign": "go",
+      "support": 17,
+      "correct": 0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "top5_recall": 0.1765,
+      "most_confused_with": {
+        "sign": "wet",
+        "n": 2
+      }
+    },
+    {
+      "sign": "goose",
+      "support": 12,
+      "correct": 1,
+      "recall": 0.0833,
+      "precision": 0.1667,
+      "f1": 0.1111,
+      "top5_recall": 0.3333,
+      "most_confused_with": {
+        "sign": "duck",
+        "n": 3
+      }
+    },
+    {
+      "sign": "grandma",
+      "support": 20,
+      "correct": 3,
+      "recall": 0.15,
+      "precision": 0.2727,
+      "f1": 0.1935,
+      "top5_recall": 0.55,
+      "most_confused_with": {
+        "sign": "mom",
+        "n": 3
+      }
+    },
+    {
+      "sign": "grandpa",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.8462,
+      "f1": 0.6667,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "dad",
+        "n": 3
+      }
+    },
+    {
+      "sign": "grass",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.4615,
+      "f1": 0.3636,
+      "top5_recall": 0.55,
+      "most_confused_with": {
+        "sign": "clown",
+        "n": 4
+      }
+    },
+    {
+      "sign": "green",
+      "support": 20,
+      "correct": 3,
+      "recall": 0.15,
+      "precision": 0.2143,
+      "f1": 0.1765,
+      "top5_recall": 0.55,
+      "most_confused_with": {
+        "sign": "toy",
+        "n": 3
+      }
+    },
+    {
+      "sign": "gum",
+      "support": 20,
+      "correct": 17,
+      "recall": 0.85,
+      "precision": 0.6296,
+      "f1": 0.7234,
+      "top5_recall": 1.0,
+      "most_confused_with": {
+        "sign": "store",
+        "n": 2
+      }
+    },
+    {
+      "sign": "hair",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.5,
+      "f1": 0.4737,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "hello",
+        "n": 2
+      }
+    },
+    {
+      "sign": "happy",
+      "support": 20,
+      "correct": 10,
+      "recall": 0.5,
+      "precision": 0.7143,
+      "f1": 0.5882,
+      "top5_recall": 0.9,
+      "most_confused_with": {
+        "sign": "mom",
+        "n": 2
+      }
+    },
+    {
+      "sign": "hat",
+      "support": 18,
+      "correct": 11,
+      "recall": 0.6111,
+      "precision": 0.6111,
+      "f1": 0.6111,
+      "top5_recall": 0.6667,
+      "most_confused_with": {
+        "sign": "lion",
+        "n": 2
+      }
+    },
+    {
+      "sign": "hate",
+      "support": 17,
+      "correct": 3,
+      "recall": 0.1765,
+      "precision": 0.3333,
+      "f1": 0.2308,
+      "top5_recall": 0.4118,
+      "most_confused_with": {
+        "sign": "airplane",
+        "n": 1
+      }
+    },
+    {
+      "sign": "have",
+      "support": 18,
+      "correct": 6,
+      "recall": 0.3333,
+      "precision": 0.5455,
+      "f1": 0.4138,
+      "top5_recall": 0.7222,
+      "most_confused_with": {
+        "sign": "animal",
+        "n": 8
+      }
+    },
+    {
+      "sign": "haveto",
+      "support": 11,
+      "correct": 2,
+      "recall": 0.1818,
+      "precision": 0.0625,
+      "f1": 0.093,
+      "top5_recall": 0.3636,
+      "most_confused_with": {
+        "sign": "vacuum",
+        "n": 3
+      }
+    },
+    {
+      "sign": "head",
+      "support": 20,
+      "correct": 12,
+      "recall": 0.6,
+      "precision": 0.5455,
+      "f1": 0.5714,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "home",
+        "n": 3
+      }
+    },
+    {
+      "sign": "hear",
+      "support": 20,
+      "correct": 1,
+      "recall": 0.05,
+      "precision": 0.0909,
+      "f1": 0.0645,
+      "top5_recall": 0.5,
+      "most_confused_with": {
+        "sign": "ear",
+        "n": 4
+      }
+    },
+    {
+      "sign": "helicopter",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.4444,
+      "f1": 0.2759,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "cloud",
+        "n": 3
+      }
+    },
+    {
+      "sign": "hello",
+      "support": 20,
+      "correct": 12,
+      "recall": 0.6,
+      "precision": 0.2727,
+      "f1": 0.375,
+      "top5_recall": 0.7,
+      "most_confused_with": {
+        "sign": "cloud",
+        "n": 1
+      }
+    },
+    {
+      "sign": "hen",
+      "support": 12,
+      "correct": 3,
+      "recall": 0.25,
+      "precision": 0.1875,
+      "f1": 0.2143,
+      "top5_recall": 0.3333,
+      "most_confused_with": {
+        "sign": "look",
+        "n": 2
+      }
+    },
+    {
+      "sign": "hesheit",
+      "support": 16,
+      "correct": 3,
+      "recall": 0.1875,
+      "precision": 0.25,
+      "f1": 0.2143,
+      "top5_recall": 0.3125,
+      "most_confused_with": {
+        "sign": "pen",
+        "n": 2
+      }
+    },
+    {
+      "sign": "hide",
+      "support": 20,
+      "correct": 0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "top5_recall": 0.3,
+      "most_confused_with": {
+        "sign": "bath",
+        "n": 2
+      }
+    },
+    {
+      "sign": "high",
+      "support": 15,
+      "correct": 7,
+      "recall": 0.4667,
+      "precision": 0.4375,
+      "f1": 0.4516,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "store",
+        "n": 2
+      }
+    },
+    {
+      "sign": "home",
+      "support": 20,
+      "correct": 17,
+      "recall": 0.85,
+      "precision": 0.3864,
+      "f1": 0.5312,
+      "top5_recall": 0.95,
+      "most_confused_with": {
+        "sign": "chair",
+        "n": 1
+      }
+    },
+    {
+      "sign": "horse",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.6875,
+      "f1": 0.6111,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "donkey",
+        "n": 4
+      }
+    },
+    {
+      "sign": "hot",
+      "support": 20,
+      "correct": 8,
+      "recall": 0.4,
+      "precision": 0.3333,
+      "f1": 0.3636,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "arm",
+        "n": 2
+      }
+    },
+    {
+      "sign": "hungry",
+      "support": 18,
+      "correct": 11,
+      "recall": 0.6111,
+      "precision": 0.5238,
+      "f1": 0.5641,
+      "top5_recall": 0.7222,
+      "most_confused_with": {
+        "sign": "vacuum",
+        "n": 2
+      }
+    },
+    {
+      "sign": "icecream",
+      "support": 20,
+      "correct": 2,
+      "recall": 0.1,
+      "precision": 0.3333,
+      "f1": 0.1538,
+      "top5_recall": 0.7,
+      "most_confused_with": {
+        "sign": "doll",
+        "n": 6
+      }
+    },
+    {
+      "sign": "if",
+      "support": 20,
+      "correct": 5,
+      "recall": 0.25,
+      "precision": 0.2381,
+      "f1": 0.2439,
+      "top5_recall": 0.55,
+      "most_confused_with": {
+        "sign": "see",
+        "n": 3
+      }
+    },
+    {
+      "sign": "into",
+      "support": 19,
+      "correct": 4,
+      "recall": 0.2105,
+      "precision": 0.2,
+      "f1": 0.2051,
+      "top5_recall": 0.3158,
+      "most_confused_with": {
+        "sign": "yes",
+        "n": 4
+      }
+    },
+    {
+      "sign": "jacket",
+      "support": 20,
+      "correct": 8,
+      "recall": 0.4,
+      "precision": 0.1429,
+      "f1": 0.2105,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "vacuum",
+        "n": 3
+      }
+    },
+    {
+      "sign": "jeans",
+      "support": 17,
+      "correct": 3,
+      "recall": 0.1765,
+      "precision": 0.2,
+      "f1": 0.1875,
+      "top5_recall": 0.2941,
+      "most_confused_with": {
+        "sign": "nuts",
+        "n": 2
+      }
+    },
+    {
+      "sign": "jump",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.1935,
+      "f1": 0.2353,
+      "top5_recall": 0.55,
+      "most_confused_with": {
+        "sign": "chair",
+        "n": 2
+      }
+    },
+    {
+      "sign": "kiss",
+      "support": 20,
+      "correct": 0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "top5_recall": 0.3,
+      "most_confused_with": {
+        "sign": "home",
+        "n": 5
+      }
+    },
+    {
+      "sign": "kitty",
+      "support": 20,
+      "correct": 0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "top5_recall": 0.4,
+      "most_confused_with": {
+        "sign": "see",
+        "n": 4
+      }
+    },
+    {
+      "sign": "lamp",
+      "support": 16,
+      "correct": 3,
+      "recall": 0.1875,
+      "precision": 0.375,
+      "f1": 0.25,
+      "top5_recall": 0.625,
+      "most_confused_with": {
+        "sign": "wet",
+        "n": 3
+      }
+    },
+    {
+      "sign": "later",
+      "support": 18,
+      "correct": 6,
+      "recall": 0.3333,
+      "precision": 0.75,
+      "f1": 0.4615,
+      "top5_recall": 0.4444,
+      "most_confused_with": {
+        "sign": "ear",
+        "n": 2
+      }
+    },
+    {
+      "sign": "like",
+      "support": 19,
+      "correct": 7,
+      "recall": 0.3684,
+      "precision": 0.2917,
+      "f1": 0.3256,
+      "top5_recall": 0.6316,
+      "most_confused_with": {
+        "sign": "hungry",
+        "n": 2
+      }
+    },
+    {
+      "sign": "lion",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.6923,
+      "f1": 0.5455,
+      "top5_recall": 0.5,
+      "most_confused_with": {
+        "sign": "uncle",
+        "n": 3
+      }
+    },
+    {
+      "sign": "lips",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.3636,
+      "f1": 0.2581,
+      "top5_recall": 0.7,
+      "most_confused_with": {
+        "sign": "mouth",
+        "n": 5
+      }
+    },
+    {
+      "sign": "listen",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.4,
+      "f1": 0.2667,
+      "top5_recall": 0.7,
+      "most_confused_with": {
+        "sign": "ear",
+        "n": 3
+      }
+    },
+    {
+      "sign": "look",
+      "support": 20,
+      "correct": 3,
+      "recall": 0.15,
+      "precision": 0.1667,
+      "f1": 0.1579,
+      "top5_recall": 0.6,
+      "most_confused_with": {
+        "sign": "read",
+        "n": 2
+      }
+    },
+    {
+      "sign": "loud",
+      "support": 19,
+      "correct": 3,
+      "recall": 0.1579,
+      "precision": 0.2308,
+      "f1": 0.1875,
+      "top5_recall": 0.3158,
+      "most_confused_with": {
+        "sign": "bye",
+        "n": 3
+      }
+    },
+    {
+      "sign": "mad",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.3333,
+      "f1": 0.3158,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "clown",
+        "n": 2
+      }
+    },
+    {
+      "sign": "make",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.3333,
+      "f1": 0.25,
+      "top5_recall": 0.5,
+      "most_confused_with": {
+        "sign": "cheek",
+        "n": 2
+      }
+    },
+    {
+      "sign": "man",
+      "support": 20,
+      "correct": 13,
+      "recall": 0.65,
+      "precision": 0.5417,
+      "f1": 0.5909,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "vacuum",
+        "n": 2
+      }
+    },
+    {
+      "sign": "many",
+      "support": 19,
+      "correct": 9,
+      "recall": 0.4737,
+      "precision": 0.5,
+      "f1": 0.4865,
+      "top5_recall": 0.8947,
+      "most_confused_with": {
+        "sign": "see",
+        "n": 3
+      }
+    },
+    {
+      "sign": "milk",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.5,
+      "f1": 0.375,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "fast",
+        "n": 3
+      }
+    },
+    {
+      "sign": "minemy",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.6,
+      "f1": 0.5143,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "like",
+        "n": 3
+      }
+    },
+    {
+      "sign": "mitten",
+      "support": 14,
+      "correct": 1,
+      "recall": 0.0714,
+      "precision": 0.3333,
+      "f1": 0.1176,
+      "top5_recall": 0.2143,
+      "most_confused_with": {
+        "sign": "many",
+        "n": 2
+      }
+    },
+    {
+      "sign": "mom",
+      "support": 20,
+      "correct": 8,
+      "recall": 0.4,
+      "precision": 0.381,
+      "f1": 0.3902,
+      "top5_recall": 0.55,
+      "most_confused_with": {
+        "sign": "drink",
+        "n": 3
+      }
+    },
+    {
+      "sign": "moon",
+      "support": 19,
+      "correct": 7,
+      "recall": 0.3684,
+      "precision": 0.6364,
+      "f1": 0.4667,
+      "top5_recall": 0.4737,
+      "most_confused_with": {
+        "sign": "bug",
+        "n": 2
+      }
+    },
+    {
+      "sign": "morning",
+      "support": 18,
+      "correct": 7,
+      "recall": 0.3889,
+      "precision": 0.3333,
+      "f1": 0.359,
+      "top5_recall": 0.7778,
+      "most_confused_with": {
+        "sign": "why",
+        "n": 4
+      }
+    },
+    {
+      "sign": "mouse",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.36,
+      "f1": 0.4,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "doll",
+        "n": 5
+      }
+    },
+    {
+      "sign": "mouth",
+      "support": 20,
+      "correct": 5,
+      "recall": 0.25,
+      "precision": 0.4545,
+      "f1": 0.3226,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "glasswindow",
+        "n": 4
+      }
+    },
+    {
+      "sign": "nap",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.6,
+      "f1": 0.4,
+      "top5_recall": 0.5,
+      "most_confused_with": {
+        "sign": "haveto",
+        "n": 2
+      }
+    },
+    {
+      "sign": "napkin",
+      "support": 20,
+      "correct": 10,
+      "recall": 0.5,
+      "precision": 0.5,
+      "f1": 0.5,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "tiger",
+        "n": 4
+      }
+    },
+    {
+      "sign": "night",
+      "support": 19,
+      "correct": 2,
+      "recall": 0.1053,
+      "precision": 0.1176,
+      "f1": 0.1111,
+      "top5_recall": 0.3684,
+      "most_confused_with": {
+        "sign": "read",
+        "n": 3
+      }
+    },
+    {
+      "sign": "no",
+      "support": 19,
+      "correct": 6,
+      "recall": 0.3158,
+      "precision": 0.25,
+      "f1": 0.2791,
+      "top5_recall": 0.6316,
+      "most_confused_with": {
+        "sign": "chair",
+        "n": 4
+      }
+    },
+    {
+      "sign": "noisy",
+      "support": 20,
+      "correct": 2,
+      "recall": 0.1,
+      "precision": 0.4,
+      "f1": 0.16,
+      "top5_recall": 0.45,
+      "most_confused_with": {
+        "sign": "store",
+        "n": 3
+      }
+    },
+    {
+      "sign": "nose",
+      "support": 20,
+      "correct": 16,
+      "recall": 0.8,
+      "precision": 0.4706,
+      "f1": 0.5926,
+      "top5_recall": 0.95,
+      "most_confused_with": {
+        "sign": "black",
+        "n": 1
+      }
+    },
+    {
+      "sign": "not",
+      "support": 17,
+      "correct": 3,
+      "recall": 0.1765,
+      "precision": 0.2727,
+      "f1": 0.2143,
+      "top5_recall": 0.4118,
+      "most_confused_with": {
+        "sign": "nuts",
+        "n": 2
+      }
+    },
+    {
+      "sign": "now",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.7333,
+      "f1": 0.6286,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "drawer",
+        "n": 3
+      }
+    },
+    {
+      "sign": "nuts",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.2593,
+      "f1": 0.2979,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "doll",
+        "n": 6
+      }
+    },
+    {
+      "sign": "old",
+      "support": 17,
+      "correct": 8,
+      "recall": 0.4706,
+      "precision": 0.4706,
+      "f1": 0.4706,
+      "top5_recall": 0.5882,
+      "most_confused_with": {
+        "sign": "orange",
+        "n": 3
+      }
+    },
+    {
+      "sign": "on",
+      "support": 19,
+      "correct": 4,
+      "recall": 0.2105,
+      "precision": 0.087,
+      "f1": 0.1231,
+      "top5_recall": 0.5263,
+      "most_confused_with": {
+        "sign": "chair",
+        "n": 2
+      }
+    },
+    {
+      "sign": "open",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.4583,
+      "f1": 0.5,
+      "top5_recall": 0.7,
+      "most_confused_with": {
+        "sign": "chocolate",
+        "n": 3
+      }
+    },
+    {
+      "sign": "orange",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.4118,
+      "f1": 0.3784,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "doll",
+        "n": 3
+      }
+    },
+    {
+      "sign": "outside",
+      "support": 20,
+      "correct": 5,
+      "recall": 0.25,
+      "precision": 0.5,
+      "f1": 0.3333,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "why",
+        "n": 6
+      }
+    },
+    {
+      "sign": "owie",
+      "support": 20,
+      "correct": 0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "top5_recall": 0.15,
+      "most_confused_with": {
+        "sign": "drawer",
+        "n": 2
+      }
+    },
+    {
+      "sign": "owl",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.4231,
+      "f1": 0.4783,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "boy",
+        "n": 1
+      }
+    },
+    {
+      "sign": "pajamas",
+      "support": 20,
+      "correct": 5,
+      "recall": 0.25,
+      "precision": 0.5556,
+      "f1": 0.3448,
+      "top5_recall": 0.55,
+      "most_confused_with": {
+        "sign": "vacuum",
+        "n": 3
+      }
+    },
+    {
+      "sign": "pen",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.25,
+      "f1": 0.2222,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "pencil",
+        "n": 9
+      }
+    },
+    {
+      "sign": "pencil",
+      "support": 20,
+      "correct": 10,
+      "recall": 0.5,
+      "precision": 0.4,
+      "f1": 0.4444,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "pen",
+        "n": 3
+      }
+    },
+    {
+      "sign": "penny",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.55,
+      "f1": 0.55,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "see",
+        "n": 2
+      }
+    },
+    {
+      "sign": "person",
+      "support": 14,
+      "correct": 1,
+      "recall": 0.0714,
+      "precision": 0.0769,
+      "f1": 0.0741,
+      "top5_recall": 0.2857,
+      "most_confused_with": {
+        "sign": "bed",
+        "n": 2
+      }
+    },
+    {
+      "sign": "pig",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.6,
+      "f1": 0.5143,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "dirty",
+        "n": 3
+      }
+    },
+    {
+      "sign": "pizza",
+      "support": 20,
+      "correct": 5,
+      "recall": 0.25,
+      "precision": 0.5,
+      "f1": 0.3333,
+      "top5_recall": 0.4,
+      "most_confused_with": {
+        "sign": "balloon",
+        "n": 2
+      }
+    },
+    {
+      "sign": "please",
+      "support": 20,
+      "correct": 13,
+      "recall": 0.65,
+      "precision": 0.619,
+      "f1": 0.6341,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "white",
+        "n": 3
+      }
+    },
+    {
+      "sign": "police",
+      "support": 20,
+      "correct": 13,
+      "recall": 0.65,
+      "precision": 0.8125,
+      "f1": 0.7222,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "arm",
+        "n": 3
+      }
+    },
+    {
+      "sign": "pool",
+      "support": 17,
+      "correct": 7,
+      "recall": 0.4118,
+      "precision": 0.3889,
+      "f1": 0.4,
+      "top5_recall": 0.5294,
+      "most_confused_with": {
+        "sign": "jeans",
+        "n": 2
+      }
+    },
+    {
+      "sign": "potty",
+      "support": 19,
+      "correct": 4,
+      "recall": 0.2105,
+      "precision": 0.3077,
+      "f1": 0.25,
+      "top5_recall": 0.4737,
+      "most_confused_with": {
+        "sign": "yesterday",
+        "n": 3
+      }
+    },
+    {
+      "sign": "pretend",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.2667,
+      "f1": 0.2286,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "hello",
+        "n": 5
+      }
+    },
+    {
+      "sign": "pretty",
+      "support": 20,
+      "correct": 5,
+      "recall": 0.25,
+      "precision": 0.4167,
+      "f1": 0.3125,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "sleep",
+        "n": 4
+      }
+    },
+    {
+      "sign": "puppy",
+      "support": 16,
+      "correct": 2,
+      "recall": 0.125,
+      "precision": 0.2222,
+      "f1": 0.16,
+      "top5_recall": 0.375,
+      "most_confused_with": {
+        "sign": "dog",
+        "n": 4
+      }
+    },
+    {
+      "sign": "puzzle",
+      "support": 18,
+      "correct": 1,
+      "recall": 0.0556,
+      "precision": 0.0556,
+      "f1": 0.0556,
+      "top5_recall": 0.6111,
+      "most_confused_with": {
+        "sign": "stay",
+        "n": 4
+      }
+    },
+    {
+      "sign": "quiet",
+      "support": 19,
+      "correct": 12,
+      "recall": 0.6316,
+      "precision": 0.3529,
+      "f1": 0.4528,
+      "top5_recall": 0.7895,
+      "most_confused_with": {
+        "sign": "drink",
+        "n": 2
+      }
+    },
+    {
+      "sign": "radio",
+      "support": 20,
+      "correct": 10,
+      "recall": 0.5,
+      "precision": 0.2439,
+      "f1": 0.3279,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "home",
+        "n": 3
+      }
+    },
+    {
+      "sign": "rain",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.3793,
+      "f1": 0.449,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "child",
+        "n": 1
+      }
+    },
+    {
+      "sign": "read",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.15,
+      "f1": 0.2,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "no",
+        "n": 3
+      }
+    },
+    {
+      "sign": "red",
+      "support": 20,
+      "correct": 2,
+      "recall": 0.1,
+      "precision": 0.1818,
+      "f1": 0.129,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "say",
+        "n": 5
+      }
+    },
+    {
+      "sign": "refrigerator",
+      "support": 16,
+      "correct": 2,
+      "recall": 0.125,
+      "precision": 0.3333,
+      "f1": 0.1818,
+      "top5_recall": 0.3125,
+      "most_confused_with": {
+        "sign": "cat",
+        "n": 2
+      }
+    },
+    {
+      "sign": "ride",
+      "support": 19,
+      "correct": 1,
+      "recall": 0.0526,
+      "precision": 0.0769,
+      "f1": 0.0625,
+      "top5_recall": 0.4737,
+      "most_confused_with": {
+        "sign": "chair",
+        "n": 2
+      }
+    },
+    {
+      "sign": "room",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.4118,
+      "f1": 0.3784,
+      "top5_recall": 0.6,
+      "most_confused_with": {
+        "sign": "bedroom",
+        "n": 2
+      }
+    },
+    {
+      "sign": "sad",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.6,
+      "f1": 0.5143,
+      "top5_recall": 0.6,
+      "most_confused_with": {
+        "sign": "wet",
+        "n": 2
+      }
+    },
+    {
+      "sign": "same",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.4118,
+      "f1": 0.3784,
+      "top5_recall": 0.7,
+      "most_confused_with": {
+        "sign": "stay",
+        "n": 2
+      }
+    },
+    {
+      "sign": "say",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.3667,
+      "f1": 0.44,
+      "top5_recall": 0.7,
+      "most_confused_with": {
+        "sign": "stuck",
+        "n": 2
+      }
+    },
+    {
+      "sign": "scissors",
+      "support": 20,
+      "correct": 1,
+      "recall": 0.05,
+      "precision": 0.05,
+      "f1": 0.05,
+      "top5_recall": 0.5,
+      "most_confused_with": {
+        "sign": "cut",
+        "n": 4
+      }
+    },
+    {
+      "sign": "see",
+      "support": 20,
+      "correct": 13,
+      "recall": 0.65,
+      "precision": 0.3514,
+      "f1": 0.4561,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "dog",
+        "n": 2
+      }
+    },
+    {
+      "sign": "shhh",
+      "support": 20,
+      "correct": 12,
+      "recall": 0.6,
+      "precision": 0.4286,
+      "f1": 0.5,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "doll",
+        "n": 3
+      }
+    },
+    {
+      "sign": "shirt",
+      "support": 19,
+      "correct": 13,
+      "recall": 0.6842,
+      "precision": 0.52,
+      "f1": 0.5909,
+      "top5_recall": 0.8421,
+      "most_confused_with": {
+        "sign": "arm",
+        "n": 1
+      }
+    },
+    {
+      "sign": "shoe",
+      "support": 20,
+      "correct": 10,
+      "recall": 0.5,
+      "precision": 0.303,
+      "f1": 0.3774,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "backyard",
+        "n": 2
+      }
+    },
+    {
+      "sign": "shower",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.45,
+      "f1": 0.45,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "high",
+        "n": 3
+      }
+    },
+    {
+      "sign": "sick",
+      "support": 20,
+      "correct": 13,
+      "recall": 0.65,
+      "precision": 0.8125,
+      "f1": 0.7222,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "hat",
+        "n": 2
+      }
+    },
+    {
+      "sign": "sleep",
+      "support": 20,
+      "correct": 3,
+      "recall": 0.15,
+      "precision": 0.2,
+      "f1": 0.1714,
+      "top5_recall": 0.7,
+      "most_confused_with": {
+        "sign": "sleepy",
+        "n": 7
+      }
+    },
+    {
+      "sign": "sleepy",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.25,
+      "f1": 0.2917,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "mad",
+        "n": 3
+      }
+    },
+    {
+      "sign": "smile",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.1667,
+      "f1": 0.2258,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "apple",
+        "n": 3
+      }
+    },
+    {
+      "sign": "snack",
+      "support": 16,
+      "correct": 1,
+      "recall": 0.0625,
+      "precision": 0.0556,
+      "f1": 0.0588,
+      "top5_recall": 0.4375,
+      "most_confused_with": {
+        "sign": "drink",
+        "n": 3
+      }
+    },
+    {
+      "sign": "snow",
+      "support": 20,
+      "correct": 8,
+      "recall": 0.4,
+      "precision": 0.3636,
+      "f1": 0.381,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "find",
+        "n": 2
+      }
+    },
+    {
+      "sign": "stairs",
+      "support": 16,
+      "correct": 5,
+      "recall": 0.3125,
+      "precision": 0.4545,
+      "f1": 0.3704,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "elephant",
+        "n": 2
+      }
+    },
+    {
+      "sign": "stay",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.2059,
+      "f1": 0.2593,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "that",
+        "n": 6
+      }
+    },
+    {
+      "sign": "sticky",
+      "support": 17,
+      "correct": 0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "top5_recall": 0.2353,
+      "most_confused_with": {
+        "sign": "find",
+        "n": 4
+      }
+    },
+    {
+      "sign": "store",
+      "support": 20,
+      "correct": 12,
+      "recall": 0.6,
+      "precision": 0.3871,
+      "f1": 0.4706,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "time",
+        "n": 2
+      }
+    },
+    {
+      "sign": "story",
+      "support": 20,
+      "correct": 3,
+      "recall": 0.15,
+      "precision": 0.2308,
+      "f1": 0.1818,
+      "top5_recall": 0.5,
+      "most_confused_with": {
+        "sign": "chocolate",
+        "n": 4
+      }
+    },
+    {
+      "sign": "stuck",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.4583,
+      "f1": 0.5,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "scissors",
+        "n": 2
+      }
+    },
+    {
+      "sign": "sun",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.4444,
+      "f1": 0.2759,
+      "top5_recall": 0.45,
+      "most_confused_with": {
+        "sign": "hello",
+        "n": 4
+      }
+    },
+    {
+      "sign": "table",
+      "support": 19,
+      "correct": 12,
+      "recall": 0.6316,
+      "precision": 0.3158,
+      "f1": 0.4211,
+      "top5_recall": 0.8421,
+      "most_confused_with": {
+        "sign": "arm",
+        "n": 1
+      }
+    },
+    {
+      "sign": "talk",
+      "support": 20,
+      "correct": 12,
+      "recall": 0.6,
+      "precision": 0.5714,
+      "f1": 0.5854,
+      "top5_recall": 0.9,
+      "most_confused_with": {
+        "sign": "drink",
+        "n": 4
+      }
+    },
+    {
+      "sign": "taste",
+      "support": 20,
+      "correct": 8,
+      "recall": 0.4,
+      "precision": 0.5,
+      "f1": 0.4444,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "mad",
+        "n": 4
+      }
+    },
+    {
+      "sign": "thankyou",
+      "support": 14,
+      "correct": 7,
+      "recall": 0.5,
+      "precision": 0.4118,
+      "f1": 0.4516,
+      "top5_recall": 0.5714,
+      "most_confused_with": {
+        "sign": "shirt",
+        "n": 3
+      }
+    },
+    {
+      "sign": "that",
+      "support": 15,
+      "correct": 0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "top5_recall": 0.6,
+      "most_confused_with": {
+        "sign": "stay",
+        "n": 5
+      }
+    },
+    {
+      "sign": "there",
+      "support": 17,
+      "correct": 1,
+      "recall": 0.0588,
+      "precision": 0.25,
+      "f1": 0.0952,
+      "top5_recall": 0.1176,
+      "most_confused_with": {
+        "sign": "look",
+        "n": 2
+      }
+    },
+    {
+      "sign": "think",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.4118,
+      "f1": 0.3784,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "penny",
+        "n": 3
+      }
+    },
+    {
+      "sign": "thirsty",
+      "support": 20,
+      "correct": 5,
+      "recall": 0.25,
+      "precision": 0.25,
+      "f1": 0.25,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "stuck",
+        "n": 3
+      }
+    },
+    {
+      "sign": "tiger",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.55,
+      "f1": 0.55,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "smile",
+        "n": 3
+      }
+    },
+    {
+      "sign": "time",
+      "support": 20,
+      "correct": 11,
+      "recall": 0.55,
+      "precision": 0.1746,
+      "f1": 0.2651,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "chair",
+        "n": 1
+      }
+    },
+    {
+      "sign": "tomorrow",
+      "support": 19,
+      "correct": 9,
+      "recall": 0.4737,
+      "precision": 0.5625,
+      "f1": 0.5143,
+      "top5_recall": 0.7368,
+      "most_confused_with": {
+        "sign": "vacuum",
+        "n": 2
+      }
+    },
+    {
+      "sign": "tongue",
+      "support": 20,
+      "correct": 3,
+      "recall": 0.15,
+      "precision": 0.2,
+      "f1": 0.1714,
+      "top5_recall": 0.55,
+      "most_confused_with": {
+        "sign": "nose",
+        "n": 3
+      }
+    },
+    {
+      "sign": "tooth",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.5625,
+      "f1": 0.5,
+      "top5_recall": 0.7,
+      "most_confused_with": {
+        "sign": "nose",
+        "n": 4
+      }
+    },
+    {
+      "sign": "toothbrush",
+      "support": 17,
+      "correct": 11,
+      "recall": 0.6471,
+      "precision": 0.5,
+      "f1": 0.5641,
+      "top5_recall": 0.8235,
+      "most_confused_with": {
+        "sign": "mouse",
+        "n": 2
+      }
+    },
+    {
+      "sign": "touch",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.3333,
+      "f1": 0.3415,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "that",
+        "n": 3
+      }
+    },
+    {
+      "sign": "toy",
+      "support": 19,
+      "correct": 6,
+      "recall": 0.3158,
+      "precision": 0.3529,
+      "f1": 0.3333,
+      "top5_recall": 0.5789,
+      "most_confused_with": {
+        "sign": "backyard",
+        "n": 2
+      }
+    },
+    {
+      "sign": "tree",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.3636,
+      "f1": 0.2581,
+      "top5_recall": 0.6,
+      "most_confused_with": {
+        "sign": "radio",
+        "n": 3
+      }
+    },
+    {
+      "sign": "tv",
+      "support": 20,
+      "correct": 8,
+      "recall": 0.4,
+      "precision": 0.32,
+      "f1": 0.3556,
+      "top5_recall": 0.55,
+      "most_confused_with": {
+        "sign": "read",
+        "n": 2
+      }
+    },
+    {
+      "sign": "uncle",
+      "support": 20,
+      "correct": 15,
+      "recall": 0.75,
+      "precision": 0.4412,
+      "f1": 0.5556,
+      "top5_recall": 0.9,
+      "most_confused_with": {
+        "sign": "owl",
+        "n": 3
+      }
+    },
+    {
+      "sign": "underwear",
+      "support": 16,
+      "correct": 13,
+      "recall": 0.8125,
+      "precision": 0.52,
+      "f1": 0.6341,
+      "top5_recall": 1.0,
+      "most_confused_with": {
+        "sign": "food",
+        "n": 2
+      }
+    },
+    {
+      "sign": "up",
+      "support": 20,
+      "correct": 12,
+      "recall": 0.6,
+      "precision": 0.7059,
+      "f1": 0.6486,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "haveto",
+        "n": 1
+      }
+    },
+    {
+      "sign": "vacuum",
+      "support": 17,
+      "correct": 2,
+      "recall": 0.1176,
+      "precision": 0.022,
+      "f1": 0.037,
+      "top5_recall": 0.5294,
+      "most_confused_with": {
+        "sign": "owie",
+        "n": 2
+      }
+    },
+    {
+      "sign": "wait",
+      "support": 20,
+      "correct": 13,
+      "recall": 0.65,
+      "precision": 0.5,
+      "f1": 0.5652,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "finger",
+        "n": 3
+      }
+    },
+    {
+      "sign": "wake",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.4737,
+      "f1": 0.4615,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "awake",
+        "n": 3
+      }
+    },
+    {
+      "sign": "water",
+      "support": 20,
+      "correct": 16,
+      "recall": 0.8,
+      "precision": 0.7273,
+      "f1": 0.7619,
+      "top5_recall": 1.0,
+      "most_confused_with": {
+        "sign": "snack",
+        "n": 2
+      }
+    },
+    {
+      "sign": "wet",
+      "support": 16,
+      "correct": 5,
+      "recall": 0.3125,
+      "precision": 0.1852,
+      "f1": 0.2326,
+      "top5_recall": 0.5625,
+      "most_confused_with": {
+        "sign": "sad",
+        "n": 2
+      }
+    },
+    {
+      "sign": "weus",
+      "support": 20,
+      "correct": 13,
+      "recall": 0.65,
+      "precision": 0.4483,
+      "f1": 0.5306,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "vacuum",
+        "n": 2
+      }
+    },
+    {
+      "sign": "where",
+      "support": 20,
+      "correct": 4,
+      "recall": 0.2,
+      "precision": 0.3077,
+      "f1": 0.2424,
+      "top5_recall": 0.6,
+      "most_confused_with": {
+        "sign": "backyard",
+        "n": 3
+      }
+    },
+    {
+      "sign": "white",
+      "support": 20,
+      "correct": 8,
+      "recall": 0.4,
+      "precision": 0.3636,
+      "f1": 0.381,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "like",
+        "n": 2
+      }
+    },
+    {
+      "sign": "who",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.6,
+      "f1": 0.5143,
+      "top5_recall": 0.55,
+      "most_confused_with": {
+        "sign": "mouse",
+        "n": 2
+      }
+    },
+    {
+      "sign": "why",
+      "support": 20,
+      "correct": 3,
+      "recall": 0.15,
+      "precision": 0.12,
+      "f1": 0.1333,
+      "top5_recall": 0.65,
+      "most_confused_with": {
+        "sign": "radio",
+        "n": 5
+      }
+    },
+    {
+      "sign": "will",
+      "support": 17,
+      "correct": 1,
+      "recall": 0.0588,
+      "precision": 0.2,
+      "f1": 0.0909,
+      "top5_recall": 0.4118,
+      "most_confused_with": {
+        "sign": "bed",
+        "n": 4
+      }
+    },
+    {
+      "sign": "wolf",
+      "support": 19,
+      "correct": 4,
+      "recall": 0.2105,
+      "precision": 0.2105,
+      "f1": 0.2105,
+      "top5_recall": 0.6842,
+      "most_confused_with": {
+        "sign": "food",
+        "n": 4
+      }
+    },
+    {
+      "sign": "yellow",
+      "support": 19,
+      "correct": 3,
+      "recall": 0.1579,
+      "precision": 0.25,
+      "f1": 0.1935,
+      "top5_recall": 0.5263,
+      "most_confused_with": {
+        "sign": "store",
+        "n": 3
+      }
+    },
+    {
+      "sign": "yes",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.25,
+      "f1": 0.2727,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "potty",
+        "n": 3
+      }
+    },
+    {
+      "sign": "yesterday",
+      "support": 20,
+      "correct": 10,
+      "recall": 0.5,
+      "precision": 0.5556,
+      "f1": 0.5263,
+      "top5_recall": 0.75,
+      "most_confused_with": {
+        "sign": "airplane",
+        "n": 2
+      }
+    },
+    {
+      "sign": "yourself",
+      "support": 20,
+      "correct": 9,
+      "recall": 0.45,
+      "precision": 0.8182,
+      "f1": 0.5806,
+      "top5_recall": 0.8,
+      "most_confused_with": {
+        "sign": "thirsty",
+        "n": 4
+      }
+    },
+    {
+      "sign": "yucky",
+      "support": 20,
+      "correct": 6,
+      "recall": 0.3,
+      "precision": 0.4615,
+      "f1": 0.3636,
+      "top5_recall": 0.45,
+      "most_confused_with": {
+        "sign": "mom",
+        "n": 2
+      }
+    },
+    {
+      "sign": "zebra",
+      "support": 19,
+      "correct": 5,
+      "recall": 0.2632,
+      "precision": 0.8333,
+      "f1": 0.4,
+      "top5_recall": 0.5789,
+      "most_confused_with": {
+        "sign": "horse",
+        "n": 2
+      }
+    },
+    {
+      "sign": "zipper",
+      "support": 20,
+      "correct": 7,
+      "recall": 0.35,
+      "precision": 0.2,
+      "f1": 0.2545,
+      "top5_recall": 0.85,
+      "most_confused_with": {
+        "sign": "time",
+        "n": 5
+      }
+    }
+  ],
+  "top_confusions": [
+    {
+      "true": "pen",
+      "predicted": "pencil",
+      "n": 9
+    },
+    {
+      "true": "have",
+      "predicted": "animal",
+      "n": 8
+    },
+    {
+      "true": "sleep",
+      "predicted": "sleepy",
+      "n": 7
+    },
+    {
+      "true": "awake",
+      "predicted": "wake",
+      "n": 7
+    },
+    {
+      "true": "stay",
+      "predicted": "that",
+      "n": 6
+    },
+    {
+      "true": "outside",
+      "predicted": "why",
+      "n": 6
+    },
+    {
+      "true": "nuts",
+      "predicted": "doll",
+      "n": 6
+    },
+    {
+      "true": "icecream",
+      "predicted": "doll",
+      "n": 6
+    },
+    {
+      "true": "cow",
+      "predicted": "find",
+      "n": 6
+    },
+    {
+      "true": "zipper",
+      "predicted": "time",
+      "n": 5
+    },
+    {
+      "true": "why",
+      "predicted": "radio",
+      "n": 5
+    },
+    {
+      "true": "that",
+      "predicted": "stay",
+      "n": 5
+    },
+    {
+      "true": "red",
+      "predicted": "say",
+      "n": 5
+    },
+    {
+      "true": "pretend",
+      "predicted": "hello",
+      "n": 5
+    },
+    {
+      "true": "outside",
+      "predicted": "morning",
+      "n": 5
+    },
+    {
+      "true": "mouse",
+      "predicted": "doll",
+      "n": 5
+    },
+    {
+      "true": "lips",
+      "predicted": "mouth",
+      "n": 5
+    },
+    {
+      "true": "kiss",
+      "predicted": "home",
+      "n": 5
+    },
+    {
+      "true": "empty",
+      "predicted": "hot",
+      "n": 5
+    },
+    {
+      "true": "chair",
+      "predicted": "read",
+      "n": 5
+    },
+    {
+      "true": "yourself",
+      "predicted": "thirsty",
+      "n": 4
+    },
+    {
+      "true": "wolf",
+      "predicted": "food",
+      "n": 4
+    },
+    {
+      "true": "will",
+      "predicted": "bed",
+      "n": 4
+    },
+    {
+      "true": "tooth",
+      "predicted": "nose",
+      "n": 4
+    },
+    {
+      "true": "taste",
+      "predicted": "mad",
+      "n": 4
+    },
+    {
+      "true": "talk",
+      "predicted": "drink",
+      "n": 4
+    },
+    {
+      "true": "sun",
+      "predicted": "hello",
+      "n": 4
+    },
+    {
+      "true": "story",
+      "predicted": "chocolate",
+      "n": 4
+    },
+    {
+      "true": "sticky",
+      "predicted": "find",
+      "n": 4
+    },
+    {
+      "true": "scissors",
+      "predicted": "cut",
+      "n": 4
+    }
+  ]
+}

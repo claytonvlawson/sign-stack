@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sign-stack"
+version = "1.0.0"
+description = "ASL isolated-sign recognition: pose pipeline, 250-sign vocabulary, training, and a frozen signer-disjoint eval harness"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Clayton Lawson" }]
+dependencies = [
+    "numpy>=1.23",
+    "torch>=2.0",
+]
+
+[project.optional-dependencies]
+video = ["mediapipe==0.10.18", "opencv-python>=4.8"]
+dev = ["pytest>=7"]
+
+[project.scripts]
+signstack = "signstack.cli:main"
+
+[tool.setuptools]
+packages = ["signstack"]
