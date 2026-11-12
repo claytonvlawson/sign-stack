@@ -205,6 +205,12 @@ eval pack derived from it.
 ./run.sh test
 ```
 
+## Who maintains this
+
+Clayton Lawson ([signs-ai.com](https://signs-ai.com)). A result that does not
+reproduce on the frozen pack is a bug in this repo, not a disagreement about
+hyperparameters.
+
 ## License
 
 Code: MIT. The trained checkpoint and the eval pack are released for research
