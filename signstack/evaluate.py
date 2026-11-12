@@ -54,7 +54,7 @@ from torch.utils.data import DataLoader, Dataset
 
 from . import model as D
 from .contract import FEATURE_DIM, as_features, normalize_landmarks
-from .data import read_index, read_manifest
+from .data import display_path, read_index, read_manifest
 
 
 # ---------------------------------------------------------------------------
@@ -337,10 +337,10 @@ def evaluate(args):
 
     report = {
         "schema": 1,
-        "checkpoint": str(ckpt_path),
+        "checkpoint": display_path(ckpt_path),
         "checkpoint_sha256": sha256_file(ckpt_path),
         "dataset": {"kind": "pack" if args.pack else "manifest",
-                    "path": str(args.pack or args.manifest),
+                    "path": display_path(args.pack or args.manifest),
                     "frozen_files_verified": verified,
                     "sha256sums_present": bool(args.pack and
                                                (pathlib.Path(args.pack) / "SHA256SUMS").exists())},

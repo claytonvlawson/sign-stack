@@ -10,6 +10,7 @@ import torch
 
 import signstack
 from signstack import augment as A
+from signstack import data as D
 from signstack.contract import (CHANNELS, FEATURE_DIM, PART_SLICES, hand_detection_rate,
                                 normalize_landmarks, part)
 
@@ -155,6 +156,35 @@ class TestPackAndEval(unittest.TestCase):
             a.split = str(d / "split.json")
             with self.assertRaises(SystemExit):
                 evaluate(a)
+
+
+class TestDisplayPath(unittest.TestCase):
+    def test_repo_relative(self):
+        repo = pathlib.Path(__file__).resolve().parent.parent
+        self.assertEqual(D.display_path(repo / "artifacts/baseline_v1.pt"),
+                         "artifacts/baseline_v1.pt")
+
+    def test_home_relative(self):
+        self.assertEqual(D.display_path("~/data/x/val.jsonl"), "~/data/x/val.jsonl")
+
+    def test_outside_repo_and_home_falls_back_to_basename(self):
+        self.assertEqual(D.display_path("/etc/hosts"), "hosts")
+
+
+class TestCommittedReportsAreAnonymised(unittest.TestCase):
+    """Reports are committed; they must not leak the machine that produced them."""
+
+    def test_no_absolute_home_paths(self):
+        repo = pathlib.Path(__file__).resolve().parent.parent
+        offenders = []
+        for path in list((repo / "reports").rglob("*.json")) + \
+                list((repo / "reports").rglob("*.md")) + \
+                list((repo / "reports").rglob("*.csv")):
+            text = path.read_text()
+            for needle in ("/home/", "/Users/", "/root/"):
+                if needle in text:
+                    offenders.append("%s contains %s" % (path.relative_to(repo), needle))
+        self.assertEqual(offenders, [])
 
 
 if __name__ == "__main__":

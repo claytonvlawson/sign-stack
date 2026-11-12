@@ -41,6 +41,30 @@ from .model import WordTokenizer
 # manifests
 # ---------------------------------------------------------------------------
 
+
+def display_path(path):
+    """A path fit to be committed: repo-relative, else ~-relative, else the basename.
+
+    Reports land in git. Recording an absolute path from the machine that ran the
+    evaluation leaks a username and tells a reader nothing they can act on, so
+    rewrite it against the repo root (what a reviewer has) and then against $HOME
+    (what a collaborator has), and fall back to the bare filename.
+    """
+    raw = Path(os.path.abspath(Path(str(path)).expanduser()))
+    # abspath, not resolve(): a symlinked checkpoint inside the repo should still
+    # read as its repo-relative name, which is the path a reviewer will have.
+    repo_root = Path(__file__).resolve().parent.parent
+    for root in (Path.cwd(), repo_root):
+        try:
+            return raw.relative_to(root.resolve()).as_posix()
+        except ValueError:
+            continue
+    try:
+        return "~/" + raw.relative_to(Path.home()).as_posix()
+    except ValueError:
+        return raw.name
+
+
 def read_manifest(path, require_exists=True):
     """JSONL -> list of dicts. Unreadable rows are skipped, not guessed."""
     rows = []
@@ -201,8 +225,8 @@ def pack(manifest, out, shard_mb=512, limit=0, verbose=True):
             meta = {"extractor": None}
 
     summary = dict(meta, clips=len(rows), frames=written, shards=shard_no,
-                   bytes=total_bytes, out=str(out), source_dir=str(
-                       Path(rows[0]["features"]).parent))
+                   bytes=total_bytes, out=display_path(out),
+                   source_dir=display_path(Path(rows[0]["features"]).parent))
     (out / "pack.json").write_text(json.dumps(summary, indent=1) + "\n")
     if verbose:
         print(json.dumps(summary, indent=1))

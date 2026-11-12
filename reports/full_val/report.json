@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "checkpoint": "/home/snowbeach/models/deafwork/sl2t-asl/sl2t_direct_latest.pt",
+  "checkpoint": "artifacts/baseline_v1.pt",
   "checkpoint_sha256": "906d7e3eec2656181eb7841d68354f69cb8ff3489734fa7e5630afebd512fd39",
   "dataset": {
     "kind": "manifest",
-    "path": "/home/snowbeach/data/deafwork/asl/val.jsonl",
+    "path": "~/data/deafwork/asl/val.jsonl",
     "frozen_files_verified": [],
     "sha256sums_present": false
   },
@@ -62,19 +62,19 @@
   "classes": 250,
   "params": 13043966,
   "metrics": {
-    "top1": 0.3978,
+    "top1": 0.3977,
     "top1_ci95": [
-      0.3895,
-      0.4061
+      0.3894,
+      0.406
     ],
     "top5": 0.6711,
-    "exact_match": 0.3978,
+    "exact_match": 0.3977,
     "macro_top1": 0.3715
   },
   "per_signer": {
     "18796": {
-      "exact": 0.4726,
-      "sequence_exact": 0.4726,
+      "exact": 0.4722,
+      "sequence_exact": 0.4722,
       "n": 2497
     },
     "25571": {
@@ -169,8 +169,8 @@
       "support": 35,
       "correct": 15,
       "recall": 0.4286,
-      "precision": 0.4054,
-      "f1": 0.4167,
+      "precision": 0.4167,
+      "f1": 0.4225,
       "top5_recall": 0.6286,
       "most_confused_with": {
         "sign": "black",
@@ -312,8 +312,8 @@
       "support": 57,
       "correct": 28,
       "recall": 0.4912,
-      "precision": 0.4118,
-      "f1": 0.448,
+      "precision": 0.4179,
+      "f1": 0.4516,
       "top5_recall": 0.807,
       "most_confused_with": {
         "sign": "police",
@@ -338,8 +338,8 @@
       "support": 60,
       "correct": 10,
       "recall": 0.1667,
-      "precision": 0.25,
-      "f1": 0.2,
+      "precision": 0.2564,
+      "f1": 0.202,
       "top5_recall": 0.65,
       "most_confused_with": {
         "sign": "cat",
@@ -429,8 +429,8 @@
       "support": 46,
       "correct": 18,
       "recall": 0.3913,
-      "precision": 0.4,
-      "f1": 0.3956,
+      "precision": 0.3913,
+      "f1": 0.3913,
       "top5_recall": 0.6522,
       "most_confused_with": {
         "sign": "cat",
@@ -442,8 +442,8 @@
       "support": 53,
       "correct": 4,
       "recall": 0.0755,
-      "precision": 0.16,
-      "f1": 0.1026,
+      "precision": 0.1538,
+      "f1": 0.1013,
       "top5_recall": 0.3208,
       "most_confused_with": {
         "sign": "napkin",
@@ -585,8 +585,8 @@
       "support": 63,
       "correct": 12,
       "recall": 0.1905,
-      "precision": 0.1667,
-      "f1": 0.1778,
+      "precision": 0.1644,
+      "f1": 0.1765,
       "top5_recall": 0.7937,
       "most_confused_with": {
         "sign": "blue",
@@ -611,8 +611,8 @@
       "support": 44,
       "correct": 18,
       "recall": 0.4091,
-      "precision": 0.1782,
-      "f1": 0.2483,
+      "precision": 0.1765,
+      "f1": 0.2466,
       "top5_recall": 0.7727,
       "most_confused_with": {
         "sign": "read",
@@ -1053,8 +1053,8 @@
       "support": 32,
       "correct": 8,
       "recall": 0.25,
-      "precision": 0.2286,
-      "f1": 0.2388,
+      "precision": 0.2222,
+      "f1": 0.2353,
       "top5_recall": 0.4688,
       "most_confused_with": {
         "sign": "pool",
@@ -1222,8 +1222,8 @@
       "support": 78,
       "correct": 57,
       "recall": 0.7308,
-      "precision": 0.5089,
-      "f1": 0.6,
+      "precision": 0.5044,
+      "f1": 0.5969,
       "top5_recall": 0.9231,
       "most_confused_with": {
         "sign": "clown",
@@ -1651,8 +1651,8 @@
       "support": 38,
       "correct": 16,
       "recall": 0.4211,
-      "precision": 0.254,
-      "f1": 0.3168,
+      "precision": 0.2581,
+      "f1": 0.32,
       "top5_recall": 0.7105,
       "most_confused_with": {
         "sign": "wolf",
@@ -1690,8 +1690,8 @@
       "support": 62,
       "correct": 25,
       "recall": 0.4032,
-      "precision": 0.4237,
-      "f1": 0.4132,
+      "precision": 0.4167,
+      "f1": 0.4098,
       "top5_recall": 0.6774,
       "most_confused_with": {
         "sign": "see",
@@ -1948,10 +1948,10 @@
     {
       "sign": "minemy",
       "support": 76,
-      "correct": 41,
-      "recall": 0.5395,
-      "precision": 0.6308,
-      "f1": 0.5816,
+      "correct": 40,
+      "recall": 0.5263,
+      "precision": 0.625,
+      "f1": 0.5714,
       "top5_recall": 0.8684,
       "most_confused_with": {
         "sign": "like",
@@ -2080,8 +2080,8 @@
       "support": 31,
       "correct": 9,
       "recall": 0.2903,
-      "precision": 0.18,
-      "f1": 0.2222,
+      "precision": 0.1765,
+      "f1": 0.2195,
       "top5_recall": 0.5806,
       "most_confused_with": {
         "sign": "bye",
@@ -2093,8 +2093,8 @@
       "support": 49,
       "correct": 9,
       "recall": 0.1837,
-      "precision": 0.4091,
-      "f1": 0.2535,
+      "precision": 0.4286,
+      "f1": 0.2571,
       "top5_recall": 0.4694,
       "most_confused_with": {
         "sign": "store",
@@ -2171,8 +2171,8 @@
       "support": 49,
       "correct": 15,
       "recall": 0.3061,
-      "precision": 0.1515,
-      "f1": 0.2027,
+      "precision": 0.15,
+      "f1": 0.2013,
       "top5_recall": 0.6327,
       "most_confused_with": {
         "sign": "chair",
@@ -2340,8 +2340,8 @@
       "support": 78,
       "correct": 53,
       "recall": 0.6795,
-      "precision": 0.6092,
-      "f1": 0.6424,
+      "precision": 0.6023,
+      "f1": 0.6386,
       "top5_recall": 0.8846,
       "most_confused_with": {
         "sign": "white",
@@ -2483,8 +2483,8 @@
       "support": 39,
       "correct": 11,
       "recall": 0.2821,
-      "precision": 0.1209,
-      "f1": 0.1692,
+      "precision": 0.1222,
+      "f1": 0.1705,
       "top5_recall": 0.641,
       "most_confused_with": {
         "sign": "chair",
@@ -2951,8 +2951,8 @@
       "support": 45,
       "correct": 27,
       "recall": 0.6,
-      "precision": 0.1731,
-      "f1": 0.2687,
+      "precision": 0.1742,
+      "f1": 0.27,
       "top5_recall": 0.7778,
       "most_confused_with": {
         "sign": "duck",
@@ -3107,8 +3107,8 @@
       "support": 31,
       "correct": 3,
       "recall": 0.0968,
-      "precision": 0.0161,
-      "f1": 0.0276,
+      "precision": 0.016,
+      "f1": 0.0275,
       "top5_recall": 0.4194,
       "most_confused_with": {
         "sign": "owie",
@@ -3172,8 +3172,8 @@
       "support": 56,
       "correct": 36,
       "recall": 0.6429,
-      "precision": 0.4675,
-      "f1": 0.5414,
+      "precision": 0.4737,
+      "f1": 0.5455,
       "top5_recall": 0.7857,
       "most_confused_with": {
         "sign": "jacket",
@@ -3289,8 +3289,8 @@
       "support": 85,
       "correct": 40,
       "recall": 0.4706,
-      "precision": 0.6154,
-      "f1": 0.5333,
+      "precision": 0.625,
+      "f1": 0.5369,
       "top5_recall": 0.7529,
       "most_confused_with": {
         "sign": "airplane",
@@ -3328,8 +3328,8 @@
       "support": 55,
       "correct": 26,
       "recall": 0.4727,
-      "precision": 0.8667,
-      "f1": 0.6118,
+      "precision": 0.8966,
+      "f1": 0.619,
       "top5_recall": 0.6909,
       "most_confused_with": {
         "sign": "horse",

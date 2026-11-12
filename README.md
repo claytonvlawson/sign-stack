@@ -8,7 +8,7 @@ This is the number a partner asks for, on a split that answers the question
 they are actually asking.
 
 ```
-top-1   39.78%   [38.95, 40.61]   13,352 clips, 5 held-out signers, 250 signs
+top-1   39.77%   [38.94, 40.60]   13,352 clips, 5 held-out signers, 250 signs
 top-5   67.11%
 macro   37.15%                    unweighted mean of per-sign top-1
 chance   0.40%                    1 / 250
@@ -37,11 +37,16 @@ top-5: 0.6464 | exact match: 0.3722 | macro top-1: 0.3646
 wrote reports/frozen_v1/{report.json,per_sign.csv,confusion_matrix.npz,SUMMARY.md}
 ```
 
-About 37 s on a laptop CPU, 13 s on an Orin Nano GPU.
+About 40 to 55 s on a laptop CPU, and 16 s wall on an Orin Nano (most of it the
+harness, the GPU gets through the 4,729 clips in a few seconds).
 
 The frozen pack is a stratified sample of the full held-out split (every sign
-is tested against every held-out signer), so it lands at 37.22% versus 39.78%
+is tested against every held-out signer), so it lands at 37.22% versus 39.77%
 on all 13,352 clips. Both reports are in `reports/`.
+
+The frozen pack is bit-stable: 37.22% on a laptop CPU and on an Orin Nano, every
+run. The full split has one clip out of 13,352 that lands on either side of a
+tie, so treat 39.77% as 39.8% and not as four significant figures.
 
 Nothing is mocked: no demo video, no cherry-picked clips, no clip-level split.
 
@@ -135,7 +140,9 @@ python -m signstack train --manifest data/asl/train.jsonl \
 ```
 
 `configs/baseline.json` records the exact configuration, the per-epoch losses,
-and the checksums of both reported runs. The released checkpoint was trained on
+and the checksums of both reported runs. Paths in `reports/` are written
+repo-relative (or `~`-relative for corpora that are not shipped), so a committed
+report says what to run rather than which home directory it ran in. The released checkpoint was trained on
 the trainer's 85% clip-level holdout of the 67,295-clip train split (57,201
 clips); the 5 test signers were never in that manifest.
 
@@ -202,8 +209,13 @@ eval pack derived from it.
 ## Tests
 
 ```bash
-./run.sh test
+./run.sh test          # unit tests: contract, checkpoint round-trip, pack, split guard
 ```
+
+CI runs those on 3.11 and 3.12, and separately re-runs the frozen evaluation and
+fails if top-1 or top-5 drifts from the published value
+(`.github/workflows/eval.yml`). A number in this README that stops reproducing
+turns the build red.
 
 ## Who maintains this
 

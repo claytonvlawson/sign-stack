@@ -1,0 +1,79 @@
+name: eval gate
+
+# The README's headline claim is a number, so CI checks the number.
+# Any commit that changes preprocessing, the model, the pack, or the checkpoint
+# has to still land on the frozen pack's top-1 within tolerance, or this fails.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  frozen-eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      # Released artifacts, same URLs run.sh uses.
+      SIGNSTACK_TAG: v1.0.0
+      # Frozen pack reference: 4729 clips, 5 held-out signers, 250 signs.
+      EXPECT_TOP1: "0.3722"
+      EXPECT_TOP5: "0.6464"
+      TOLERANCE: "0.0005"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install CPU torch and the package
+        run: |
+          python -m pip install --upgrade pip
+          pip install --index-url https://download.pytorch.org/whl/cpu torch
+          pip install numpy
+          pip install -e . --no-deps
+
+      # 100 MB of released binaries. Cached on the tag so a runner does not
+      # re-download them on every push; the SHA256SUMS check inside the harness
+      # is what actually guards their integrity.
+      - name: Restore released artifacts
+        id: artifacts
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            artifacts/baseline_v1.pt
+            dist/frozen_v1.tar.gz
+          key: signstack-artifacts-${{ env.SIGNSTACK_TAG }}
+
+      - name: Fetch released artifacts
+        if: steps.artifacts.outputs.cache-hit != 'true'
+        run: |
+          base="https://github.com/claytonvlawson/sign-stack/releases/download/${SIGNSTACK_TAG}"
+          mkdir -p artifacts dist
+          curl -fL --retry 3 -o artifacts/baseline_v1.pt "${base}/baseline_v1.pt"
+          curl -fL --retry 3 -o dist/frozen_v1.tar.gz "${base}/frozen_v1.tar.gz"
+
+      - name: Save released artifacts
+        if: steps.artifacts.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            artifacts/baseline_v1.pt
+            dist/frozen_v1.tar.gz
+          key: signstack-artifacts-${{ env.SIGNSTACK_TAG }}
+
+      - name: Evaluate the frozen pack
+        run: PYTHON=python3 SKIP_INSTALL=1 ./run.sh eval
+
+      - name: Assert the published numbers
+        run: python3 scripts/check_frozen_eval.py
+
+      - name: Upload the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frozen-eval-report
+          path: reports/frozen_v1/
+          if-no-files-found: warn

@@ -1,23 +1,23 @@
 # Evaluation report
 
-Checkpoint: `/home/snowbeach/models/deafwork/sl2t-asl/sl2t_direct_latest.pt`  
+Checkpoint: `artifacts/baseline_v1.pt`  
 sha256: `906d7e3eec2656181eb7841d68354f69cb8ff3489734fa7e5630afebd512fd39`  
-Eval set: `/home/snowbeach/data/deafwork/asl/val.jsonl` (13352 clips, 250 signs)  
+Eval set: `~/data/deafwork/asl/val.jsonl` (13352 clips, 250 signs)  
 Frozen files verified: 0  
 Split: islr-signer-disjoint-v1
 
 | metric | value |
 |---|---|
-| top-1 | **39.78%** [0.3895, 0.4061] |
+| top-1 | **39.77%** [0.3894, 0.406] |
 | top-5 | 67.11% |
-| exact match | 39.78% |
+| exact match | 39.77% |
 | macro top-1 | 37.15% |
 
 ## Top-1 per held-out signer
 
 | signer | clips | top-1 |
 |---|---|---|
-| 18796 | 2497 | 47.26% |
+| 18796 | 2497 | 47.22% |
 | 25571 | 2766 | 43.56% |
 | 30680 | 2214 | 30.08% |
 | 37779 | 3120 | 53.46% |

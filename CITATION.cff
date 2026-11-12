@@ -11,7 +11,7 @@ license: MIT
 abstract: >-
   A pose pipeline, 250-sign vocabulary, training code and a frozen
   signer-disjoint evaluation harness for isolated ASL recognition. The released
-  baseline scores 39.78% top-1 on 13,352 held-out clips from five signers that
+  baseline scores 39.77% top-1 on 13,352 held-out clips from five signers that
   do not appear in training.
 references:
   - type: dataset
