@@ -4,8 +4,8 @@ title: "sign-stack: isolated ASL recognition from pose landmarks"
 authors:
   - family-names: "Lawson"
     given-names: "Clayton"
-version: 1.0.0
-date-released: 2026-11-11
+version: 1.0.1
+date-released: 2026-11-12
 url: "https://github.com/claytonvlawson/sign-stack"
 license: MIT
 abstract: >-

@@ -16,7 +16,7 @@ jobs:
     timeout-minutes: 25
     env:
       # Released artifacts, same URLs run.sh uses.
-      SIGNSTACK_TAG: v1.0.0
+      SIGNSTACK_TAG: v1.0.1
       # Frozen pack reference: 4729 clips, 5 held-out signers, 250 signs.
       EXPECT_TOP1: "0.3722"
       EXPECT_TOP5: "0.6464"

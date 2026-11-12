@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sign-stack"
-version = "1.0.0"
+version = "1.0.1"
 description = "ASL isolated-sign recognition: pose pipeline, 250-sign vocabulary, training, and a frozen signer-disjoint eval harness"
 readme = "README.md"
 license = { text = "MIT" }

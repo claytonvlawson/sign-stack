@@ -11,7 +11,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 REPO="claytonvlawson/sign-stack"
-TAG="${SIGNSTACK_TAG:-v1.0.0}"
+TAG="${SIGNSTACK_TAG:-v1.0.1}"
 BASE="${SIGNSTACK_RELEASE_BASE:-https://github.com/$REPO/releases/download/$TAG}"
 
 PY="${PYTHON:-python3}"
