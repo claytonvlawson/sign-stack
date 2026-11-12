@@ -85,7 +85,7 @@ corpus, then every gloss is kept on both sides. The five held-out people:
 | 30680 | 2,214 | 30.08% |
 | 4718 | 2,755 | 21.49% |
 
-That 21%–53% spread is the honest measure of generalisation. A clip-level split
+That 21% to 53% spread is the honest measure of generalisation. A clip-level split
 on the same corpus reports a higher number, because it lets the model recognise
 the person instead of the sign; this repo does not do that, and
 `eval/split_v1.json` is the frozen definition the harness checks against.
@@ -101,8 +101,8 @@ video ──► MediaPipe Holistic ──► (T, 225) landmarks ──► torso-
 ```
 
 - **Contract** (`signstack/contract.py`): 75 keypoints x (x, y, confidence).
-  Body 0–16 (COCO-17), left hand 17–37, right hand 38–58, face 59–74.
-  A missing keypoint is `(0, 0, 0)` — coordinates *and* confidence zeroed — so
+  Body 0 to 16 (COCO-17), left hand 17 to 37, right hand 38 to 58, face 59 to 74.
+  A missing keypoint is `(0, 0, 0)`: coordinates *and* confidence zeroed, so
   "not detected" is representable.
 - **Pose** (`signstack/extract.py`): video or camera → the contract, with a
   documented MPH→contract row mapping.
@@ -145,6 +145,11 @@ To make a corpus from your own video instead, see the `predict` path:
 ./run.sh predict --video my_clip.mp4 --ckpt artifacts/baseline_v1.pt
 ```
 
+`predict` runs the signing gate first: a clip with no hands in frame, or hands
+that never move, is refused with a reason instead of being labelled. That is
+deliberate: a classifier asked about a blank wall will happily emit a confident
+sign anyway.
+
 ## What this is not
 
 - **Not continuous translation.** One sign per clip, one word out. No
@@ -152,8 +157,11 @@ To make a corpus from your own video instead, see the `predict` path:
 - **Not a product.** It is a trained baseline on a public academic corpus,
   packaged so the number can be checked and the run repeated.
 - **Capped by the corpus, not the model.** Hands are absent most of the time in
-  these clips: mean hand-detection rate is 0.34, and 47% of clips fall below a
-  0.35 ingest floor. A bigger model does not fix missing hands.
+  these clips. On the released pack: mean hand-keypoint detection rate 0.342,
+  median 0.366, 90th percentile 0.50, maximum 0.688; 46.5% of clips fall below
+  the 0.35 floor `predict` uses to refuse non-signing input. A bigger model
+  does not fix missing hands, which is why the next gain is better perception
+  (and a corpus recorded with hands in frame), not more parameters.
 - **Signer overlap is the classic trap.** Numbers from clip-level splits are
   upper bounds. This one is signer-disjoint by construction.
 
