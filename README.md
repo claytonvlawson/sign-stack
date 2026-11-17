@@ -4,9 +4,6 @@ Isolated ASL sign recognition from pose landmarks, end to end: a pose pipeline,
 a 250-sign vocabulary, training code, and a frozen evaluation harness that
 reports **top-1 and per-sign confusion on signers the model has never seen**.
 
-This is the number a partner asks for, on a split that answers the question
-they are actually asking.
-
 ```
 top-1   39.77%   [38.94, 40.60]   13,352 clips, 5 held-out signers, 250 signs
 top-5   67.11%
@@ -219,7 +216,7 @@ turns the build red.
 
 ## Who maintains this
 
-Clayton Lawson ([signs-ai.com](https://signs-ai.com)). A result that does not
+Clayton Lawson (learnwithclay.ai). A result that does not
 reproduce on the frozen pack is a bug in this repo, not a disagreement about
 hyperparameters.
 
